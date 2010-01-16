@@ -20,11 +20,6 @@ class User < ActiveRecord::Base
     active
   end
   
-  def activate!
-    self.active = true
-    save
-  end
-  
   def deliver_activation_instructions!
     reset_persistence_token!
     Notifier.deliver_activation_instructions(self)
